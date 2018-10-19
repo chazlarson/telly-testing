@@ -1,5 +1,5 @@
 # telly-testing
-These are some simple test scripts I use for telly.
+These are some simple test scripts I use for telly. They are pretty braindead, but do what I wanted done.
 
 `config.example`
 
