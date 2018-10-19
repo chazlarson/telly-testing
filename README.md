@@ -17,10 +17,10 @@ Applies a filter to your M3U and reports the channel count.  At initial commit i
 A filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
 ```
-➜  telly-test-harness ./channel_count.sh
+➜  ./channel_count.sh
 Using default filter: USA|UK
     1139
-➜  telly-test-harness ./channel_count.sh IRISH
+➜  ./channel_count.sh IRISH
 Using filter: IRISH
       14
 ```
@@ -30,15 +30,65 @@ Using filter: IRISH
 Applies a filter to your M3U and reports the channel list.  At initial commit it's configured only for filtering on "group-title".
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
+```
+➜  ./channel_list.sh | head
+Using default filter: USA|UK
+A&E
+A&E Backup
+ABC
+ABC News
+ABC West
+AL JAZEERA NEWS ENGLISH
+AMC
+AMC Low Bandwith
+Adult Swim
+➜  ./channel_list.sh IRISH | head
+Using filter: IRISH
+3E UK
+EIR 3p0rt1 2 HD
+IR: EIR Sports 1
+IRISH: PBS America
+IRISH: RTE 1 HD
+IRISH: RTE 2 HD
+IRISH: Sony Crime
+IRISH: TG4
+IRISH: TV 3 HD
+```
+
 `group_count.sh`
 
 Applies a filter to your M3U and reports the group count.  At initial commit it's configured only for filtering on "group-title".
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
+```
+➜  ./group_count.sh
+Using default filter: USA|UK
+      17
+➜  ./group_count.sh IRISH
+Using filter: IRISH
+       1
+```
 `group_list.sh`
 
 Applies a filter to your M3U and reports the group list.  At initial commit it's configured only for filtering on "group-title".
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
+
+```
+➜  ./group_list.sh | head
+Using default filter: USA|UK
+PREMIUM USA NETWORKS
+PREMIUM USA SPORTS NETWORKS
+UK DOCUMENTARIES
+UK ENTERTAINMENT
+UK KIDS NETWORKS
+UK MOVIE NETWORKS
+UK NEWS NETWORKS
+UK SPORTS NETWORKS
+UK VIP HD/FHD
+➜  ./group_list.sh IRISH | head
+Using filter: IRISH
+IRISH
+```
 
 `m3u.sh`
 
