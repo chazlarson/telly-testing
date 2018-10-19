@@ -1,0 +1,28 @@
+# # Area51
+# export PROVIDER=Area51
+# export USER=USERNAME
+# export PASS=PASSWORD
+# export M3U_URL="http://iptv-area-51.tv:2095/get.php?username=${USER}&password=${PASS}&output=ts&type=m3u_plus"
+# export XML_URL="http://iptv-area-51.tv:2095/xmltv.php?username=${USER}&password=${PASS}&output=ts&type=m3u_plus"
+
+# # Vader
+# export PROVIDER=Vaders
+# export USER=USERNAME
+# export PASS=PASSWORD
+# export M3U_URL="http://vaders.tv/vget?username=${USER}&password=${PASS}&vod=false&format=ts"
+# export XML_URL="http://vaders.tv/p2.xml"
+
+# # Iris
+# export PROVIDER=Iris
+# export USER=USERNAME
+# export PASS=PASSWORD
+# export M3U_URL="http://irislinks.net:83/get.php?username=${USER}&password=${PASS}&type=m3u_plus&output=ts"
+# export XML_URL="http://irislinks.net:83/xmltv.php?username=${USER}&password=${PASS}"
+
+export SEDCMD=gsed
+export MYIP=0.0.0.0
+export FILTER="GROUP|GROUP"
+
+# # SchedulesDirect
+# export SDUSER=USERNAME
+# export SDPASS=PASSWORD

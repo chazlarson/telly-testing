@@ -1,0 +1,38 @@
+[Discovery]
+  Device-Auth = "telly123"
+  Device-ID = 12345678
+  Device-UUID = ""
+  Device-Firmware-Name = "hdhomeruntc_atsc"
+  Device-Firmware-Version = "20150826"
+  Device-Friendly-Name = "telly"
+  Device-Manufacturer = "Silicondust"
+  Device-Model-Number = "HDTC-2US"
+  SSDP = true
+
+[IPTV]
+  Streams = 1
+  Starting-Channel = 10000
+  XMLTV-Channels = true
+  FFMpeg = true
+
+#[SchedulesDirect]
+#  Username = ""
+#  Password = ""
+
+[Log]
+  Level = "info"
+  Requests = true
+
+[Web]
+  Base-Address = "$MYIP:6077"
+  Listen-Address = "0.0.0.0:6077"
+
+[[Source]]
+  Name = ""
+  Provider = "$PROVIDER"
+  Username = "$USER"
+  Password = "$PASS"
+  Filter = "$FILTER"
+  FilterKey = "group-title"
+  FilterRaw = false
+  Sort = "group-title"
