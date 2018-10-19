@@ -9,6 +9,8 @@ Some entries are not used for anything yet.
 
 The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` does.
 
+This file is `source`ed by the other scripts and accepts two parameters. The first is a filter string, the second can be anything and just quiets the report of what filter is being used.
+
 `channel_count.sh`
 
 Applies a filter to your M3U and reports the channel count.  At initial commit it's configured only for filtering on "group-title".
