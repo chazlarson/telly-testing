@@ -10,6 +10,7 @@ Some entries are not used for anything yet.
 The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` does.
 
 `channel_count.sh`
+
 Applies a filter to your M3U and reports the channel count.  At initial commit it's configured only for filtering on "group-title".
 A filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
@@ -23,21 +24,26 @@ Using filter: IRISH
 ```
 
 `channel_list.sh`
+
 Applies a filter to your M3U and reports the channel list.  At initial commit it's configured only for filtering on "group-title".
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
 `group_count.sh`
+
 Applies a filter to your M3U and reports the group count.  At initial commit it's configured only for filtering on "group-title".
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
 `group_list.sh`
+
 Applies a filter to your M3U and reports the group list.  At initial commit it's configured only for filtering on "group-title".
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
 `m3u.sh`
+
 Convenience script to retrieve the m3u; it redacts the username and password in the output.
 
 `go.sh`
+
 Reads config, build up docker.sh and telly.config.toml from the templates, and starts the docker container.
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
