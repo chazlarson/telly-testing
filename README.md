@@ -44,7 +44,7 @@ Convenience script to retrieve the m3u; it redacts the username and password in 
 
 `go.sh`
 
-Reads config, build up docker.sh and telly.config.toml from the templates, and starts the docker container.
+Reads config, cleans out existing telly docker containers, build up docker.sh and telly.config.toml from the templates, and starts the docker container.
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
 ```
