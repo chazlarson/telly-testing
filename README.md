@@ -94,6 +94,20 @@ IRISH
 
 Convenience script to retrieve the m3u; it redacts the username and password in the output.
 
+```
+➜  telly-test-harness ./m3u.sh | head
+Using default filter: USA|UK
+#EXTM3U
+#EXTINF:-1 tvg-id="btsport1.uk" tvg-name="VIP BT Sports 1 HD" tvg-logo="http://picon.helixhosting.ninja/30926.png" group-title="UK VIP HD/FHD",VIP BT Sports 1 HD
+http://irislinks.net:83/live/REDACTED/REDACTED/303855.ts
+#EXTINF:-1 tvg-id="btsport1.uk" tvg-name="VIP BT Sports 1 FHD" tvg-logo="http://picon.helixhosting.ninja/30929.png" group-title="UK VIP HD/FHD",VIP BT Sports 1 FHD
+http://irislinks.net:83/live/REDACTED/REDACTED/303858.ts
+#EXTINF:-1 tvg-id="btsport2.uk" tvg-name="VIP BT Sports 2 HD" tvg-logo="http://picon.helixhosting.ninja/30925.png" group-title="UK VIP HD/FHD",VIP BT Sports 2 HD
+http://irislinks.net:83/live/REDACTED/REDACTED/303854.ts
+#EXTINF:-1 tvg-id="btsport2.uk" tvg-name="VIP BT Sports  2 FHD" tvg-logo="http://picon.helixhosting.ninja/30930.png" group-title="UK VIP HD/FHD",VIP BT Sports  2 FHD
+http://irislinks.net:83/live/REDACTED/REDACTED/303859.ts
+```
+
 `go.sh`
 
 Reads config, cleans out existing telly docker containers, build up docker.sh and telly.config.toml from the templates, and starts the docker container.
