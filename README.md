@@ -1,6 +1,7 @@
 # telly-testing
 These are some simple test scripts I use for [telly](https://github.com/tellytv/telly). They are pretty braindead, but do what I wanted done.
 
+## Setup
 `config.example`
 
 make a copy of this file, called `config`, fill in details as required and uncomment one of the provider sections.  There are skeletons for Iris, Area51, Vaders.
@@ -11,10 +12,15 @@ The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` doe
 
 This file is `source`ed by the other scripts and accepts two parameters. The first is a filter string, the second can be anything and just quiets the report of what filter is being used.
 
+## Usage
+
+>NOTE: These scripts are using egrep or sed to process the regex.  telly uses go regex, so there may be differences in the regex processing.  Typically, the regex being used in telly are pretty simple [this OR that OR the other] so this works well enough.
+
+At initial commit all of these count and list scripts are configured only for filtering on "group-title", telly's default.   A filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.  IF that filter contains anything besides letters [spaces, |], it must be wrapped in quotes.
+  
 `channel_count.sh`
 
-Applies a filter to your M3U and reports the channel count.  At initial commit it's configured only for filtering on "group-title".
-A filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
+Applies a filter to your M3U and reports the channel count.
 
 ```
 ➜  ./channel_count.sh
@@ -27,8 +33,7 @@ Using filter: IRISH
 
 `channel_list.sh`
 
-Applies a filter to your M3U and reports the channel list.  At initial commit it's configured only for filtering on "group-title".
-As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
+Applies a filter to your M3U and reports the channel list.
 
 ```
 ➜  ./channel_list.sh | head
@@ -57,8 +62,7 @@ IRISH: TV 3 HD
 
 `group_count.sh`
 
-Applies a filter to your M3U and reports the group count.  At initial commit it's configured only for filtering on "group-title".
-As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
+Applies a filter to your M3U and reports the group count.
 
 ```
 ➜  ./group_count.sh
@@ -70,8 +74,7 @@ Using filter: IRISH
 ```
 `group_list.sh`
 
-Applies a filter to your M3U and reports the group list.  At initial commit it's configured only for filtering on "group-title".
-As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
+Applies a filter to your M3U and reports the group list.
 
 ```
 ➜  ./group_list.sh | head
@@ -95,7 +98,7 @@ IRISH
 Convenience script to retrieve the m3u; it redacts the username and password in the output.
 
 ```
-➜  telly-test-harness ./m3u.sh | head
+➜  ./m3u.sh | head
 Using default filter: USA|UK
 #EXTM3U
 #EXTINF:-1 tvg-id="btsport1.uk" tvg-name="VIP BT Sports 1 HD" tvg-logo="http://picon.helixhosting.ninja/30926.png" group-title="UK VIP HD/FHD",VIP BT Sports 1 HD
@@ -114,7 +117,7 @@ Reads config, cleans out existing telly docker containers, build up docker.sh an
 As above, a filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.
 
 ```
-➜  telly-test-harness ./go.sh
+➜  ./go.sh
 reading config:
 ========================================
 Using default filter: USA|UK
@@ -162,3 +165,5 @@ main.(*lineup).Scan(0xc0000bb680, 0x15, 0xae1700)
 main.main()
 	/go/src/github.com/tellytv/telly/main.go:169 +0xbe7
 ```
+
+You can often find me in the [telly discord](https://discord.gg/BSYY97X).
