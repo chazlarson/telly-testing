@@ -2,7 +2,7 @@
 
 printf "reading config: \n"
 printf "========================================\n"
-source ${PWD}/config "$1"
+. ${PWD}/config "$1"
 
 printf "\n\ncleaning up existing telly dockers: \n"
 printf "========================================\n"
