@@ -26,3 +26,19 @@ export FILTER="GROUP|GROUP"
 # # SchedulesDirect
 # export SDUSER=USERNAME
 # export SDPASS=PASSWORD
+
+_FILTER="$1"
+if [ -z "$_FILTER" ] 
+then
+	if [ -z "$2" ] 
+	then
+		echo "Using default filter: $DEFAULT_FILTER"
+	fi
+	DEFAULT_FILTER="$DEFAULT_FILTER"
+else
+	if [ -z "$2" ] 
+	then
+		echo "Using filter: $1"
+	fi
+	DEFAULT_FILTER="$1"
+fi
