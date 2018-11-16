@@ -10,7 +10,7 @@ Some entries are not used for anything yet [Schedules-Direct, the EPG URLs].
 
 The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` does.  The config entry lets you point to the appropriate one for your platform.  It'd be nice if this happened automagically.
 
-This file is `source`ed by the other scripts and accepts two parameters. The first is a filter string, the second can be anything and just quiets the report of what filter is being used.
+This file is executed by the other scripts and accepts two parameters. The first is a filter string, the second can be anything and just quiets the report of what filter is being used.
 
 ## Usage
 
