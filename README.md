@@ -14,12 +14,14 @@ This file is executed by the other scripts and accepts two parameters. The first
 
 ```
 ➜  bash config
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA
-
 ➜  bash config IRISH
+Platform: darwin17
+SEDCMD: gsed
 Using filter: IRISH
-
-➜  bash config IRISH quiet
+➜  bash config IRISH hush
 ➜ 
 ```
 
@@ -35,10 +37,14 @@ Applies a filter to your M3U and reports the channel count.
 
 ```
 ➜  ./channel_count.sh
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA|UK
     1139
     
 ➜  ./channel_count.sh IRISH
+Platform: darwin17
+SEDCMD: gsed
 Using filter: IRISH
       14
 ```
@@ -49,6 +55,8 @@ Applies a filter to your M3U and reports the channel list.
 
 ```
 ➜  ./channel_list.sh | head
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA
 A&E	USA ENTERTAINMENT
 A&E low bandwith	USA ENTERTAINMENT
@@ -61,6 +69,8 @@ AMC Low Bandwith	USA ENTERTAINMENT
 Adult Swim	USA ENTERTAINMENT
 
 ➜  ./channel_list.sh IRISH | head
+Platform: darwin17
+SEDCMD: gsed
 Using filter: IRISH
 IRE: AT THE RACES SD	IRISH
 IRE: EIR SPORTS 1 FHD	IRISH
@@ -79,6 +89,8 @@ Just runs the previous two scripts:
 
 ```
 ➜  ./channels.sh | head
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA
      618
 A&E	USA ENTERTAINMENT
@@ -91,6 +103,8 @@ AMC	USA ENTERTAINMENT
 AMC Low Bandwith	USA ENTERTAINMENT
 
 ➜  ./channels.sh IRISH | head
+Platform: darwin17
+SEDCMD: gsed
 Using filter: IRISH
       20
 IRE: AT THE RACES SD	IRISH
@@ -109,19 +123,26 @@ Applies a filter to your M3U and reports the group count.
 
 ```
 ➜  ./group_count.sh
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA|UK
       17
       
 ➜  ./group_count.sh IRISH
+Platform: darwin17
+SEDCMD: gsed
 Using filter: IRISH
        1
 ```
+
 `group_list.sh`
 
 Applies a filter to your M3U and reports the group list.
 
 ```
 ➜  ./group_list.sh | head
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA|UK
 PREMIUM USA NETWORKS
 PREMIUM USA SPORTS NETWORKS
@@ -134,6 +155,8 @@ UK SPORTS NETWORKS
 UK VIP HD/FHD
 
 ➜  ./group_list.sh IRISH | head
+Platform: darwin17
+SEDCMD: gsed
 Using filter: IRISH
 IRISH
 ```
@@ -144,6 +167,8 @@ Runs the previous two scripts:
 
 ```
 ➜  ./groups.sh
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA
        9
 PREMIUM HD USA NETWORKS
@@ -157,6 +182,8 @@ VIP USA ENTERTAINMENT
 VIP USA SPORTS NETWORKS
 
 ➜  ./groups.sh IRISH
+Platform: darwin17
+SEDCMD: gsed
 Using filter: IRISH
        1
 IRISH
@@ -168,6 +195,8 @@ Convenience script to retrieve the m3u; it redacts the username and password in 
 
 ```
 ➜  ./m3u.sh | head
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA|UK
 #EXTM3U
 #EXTINF:-1 tvg-id="btsport1.uk" tvg-name="VIP BT Sports 1 HD" tvg-logo="http://picon.helixhosting.ninja/30926.png" group-title="UK VIP HD/FHD",VIP BT Sports 1 HD
@@ -195,6 +224,8 @@ As above, a filter string can be provided as a parameter; if it's not provided t
 ➜  ./go.sh
 reading config:
 ========================================
+Platform: darwin17
+SEDCMD: gsed
 Using default filter: USA|UK
 
 
