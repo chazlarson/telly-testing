@@ -12,6 +12,17 @@ The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` doe
 
 This file is executed by the other scripts and accepts two parameters. The first is a filter string, the second can be anything and just quiets the report of what filter is being used.
 
+```
+➜  bash config
+Using default filter: USA
+
+➜  bash config IRISH
+Using filter: IRISH
+
+➜  bash config IRISH quiet
+➜ 
+```
+
 ## Usage
 
 >NOTE: These scripts are using egrep or sed to process the regex.  telly uses go regex, so there may be differences in the regex processing.  Typically, the regex being used in telly are pretty simple [this OR that OR the other] so this works well enough.
@@ -26,6 +37,7 @@ Applies a filter to your M3U and reports the channel count.
 ➜  ./channel_count.sh
 Using default filter: USA|UK
     1139
+    
 ➜  ./channel_count.sh IRISH
 Using filter: IRISH
       14
@@ -47,6 +59,7 @@ AL JAZEERA NEWS ENGLISH	USA NEWS NETWORKS
 AMC	USA ENTERTAINMENT
 AMC Low Bandwith	USA ENTERTAINMENT
 Adult Swim	USA ENTERTAINMENT
+
 ➜  ./channel_list.sh IRISH | head
 Using filter: IRISH
 IRE: AT THE RACES SD	IRISH
@@ -76,6 +89,7 @@ ABC West	USA ENTERTAINMENT
 AL JAZEERA NEWS ENGLISH	USA NEWS NETWORKS
 AMC	USA ENTERTAINMENT
 AMC Low Bandwith	USA ENTERTAINMENT
+
 ➜  ./channels.sh IRISH | head
 Using filter: IRISH
       20
@@ -97,6 +111,7 @@ Applies a filter to your M3U and reports the group count.
 ➜  ./group_count.sh
 Using default filter: USA|UK
       17
+      
 ➜  ./group_count.sh IRISH
 Using filter: IRISH
        1
@@ -117,6 +132,7 @@ UK MOVIE NETWORKS
 UK NEWS NETWORKS
 UK SPORTS NETWORKS
 UK VIP HD/FHD
+
 ➜  ./group_list.sh IRISH | head
 Using filter: IRISH
 IRISH
@@ -139,6 +155,7 @@ USA MOVIE NETWORKS
 USA NEWS NETWORKS
 VIP USA ENTERTAINMENT
 VIP USA SPORTS NETWORKS
+
 ➜  ./groups.sh IRISH
 Using filter: IRISH
        1
