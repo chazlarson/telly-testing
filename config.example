@@ -30,7 +30,14 @@
 # export XML_URL="http://PROVIDER_URL:PORT/xmltv.php?username=${USER}&password=${PASS}"
 # # Edit those URLs as needed.  You can use the ${USER} and ${PASS} placeholders.
 
-export SEDCMD=gsed
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    export SEDCMD=sed
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    export SEDCMD=gsed
+else
+    export SEDCMD=sed
+fi
+
 export MYIP=0.0.0.0
 export FILTER="GROUP|GROUP"
 
@@ -46,12 +53,16 @@ if [ -z "$_FILTER" ]
 then
 	if [ -z "$2" ] 
 	then
+		echo "Platform: $OSTYPE"
+		echo "SEDCMD: $SEDCMD"
 		echo "Using default filter: $DEFAULT_FILTER"
 	fi
 	DEFAULT_FILTER="$DEFAULT_FILTER"
 else
 	if [ -z "$2" ] 
 	then
+		echo "Platform: $OSTYPE"
+		echo "SEDCMD: $SEDCMD"
 		echo "Using filter: $1"
 	fi
 	DEFAULT_FILTER="$1"
