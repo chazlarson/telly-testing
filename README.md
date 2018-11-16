@@ -8,7 +8,7 @@ make a copy of this file, called `config`, fill in details as required and uncom
 
 Some entries are not used for anything yet [Schedules-Direct, the EPG URLs].
 
-The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` does.  The config entry lets you point to the appropriate one for your platform.  It'd be nice if this happened automagically.
+The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` does.  The config script will automagically select one or the other based on the platform you're running this on.
 
 This file is executed by the other scripts and accepts two parameters. The first is a filter string, the second can be anything and just quiets the report of what filter is being used.
 
