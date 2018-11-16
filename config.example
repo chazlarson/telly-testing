@@ -1,5 +1,6 @@
 # # Area51
-# export PROVIDER=Area51
+# export PROVIDER=area51
+# export PROVIDER_NAME=area51
 # export USER=USERNAME
 # export PASS=PASSWORD
 # export M3U_URL="http://iptv-area-51.tv:2095/get.php?username=${USER}&password=${PASS}&output=ts&type=m3u_plus"
@@ -14,10 +15,20 @@
 
 # # Iris
 # export PROVIDER=Iris
+# export PROVIDER_NAME=Iris
 # export USER=USERNAME
 # export PASS=PASSWORD
 # export M3U_URL="http://irislinks.net:83/get.php?username=${USER}&password=${PASS}&type=m3u_plus&output=ts"
 # export XML_URL="http://irislinks.net:83/xmltv.php?username=${USER}&password=${PASS}"
+
+# # Custom Provider [Don't change "PROVIDER=Custom"]
+# export PROVIDER=Custom
+# export PROVIDER_NAME=THE_PROVIDER_NAME
+# export USER=YOUR_USERNAME
+# export PASS=YOUR_PASSWORD
+# export M3U_URL="http://PROVIDER_URL:PORT/get.php?username=${USER}&password=${PASS}&type=m3u_plus&output=ts"
+# export XML_URL="http://PROVIDER_URL:PORT/xmltv.php?username=${USER}&password=${PASS}"
+# # Edit those URLs as needed.  You can use the ${USER} and ${PASS} placeholders.
 
 export SEDCMD=gsed
 export MYIP=0.0.0.0
@@ -26,6 +37,9 @@ export FILTER="GROUP|GROUP"
 # # SchedulesDirect
 # export SDUSER=USERNAME
 # export SDPASS=PASSWORD
+
+export M3U_URL_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$M3U_URL")"
+export XML_URL_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$XML_URL")"
 
 _FILTER="$1"
 if [ -z "$_FILTER" ] 
@@ -42,3 +56,5 @@ else
 	fi
 	DEFAULT_FILTER="$1"
 fi
+
+
