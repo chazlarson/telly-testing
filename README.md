@@ -4,11 +4,11 @@ These are some simple test scripts I use for [telly](https://github.com/tellytv/
 ## Setup
 `config.example`
 
-make a copy of this file, called `config`, fill in details as required and uncomment one of the provider sections.  There are skeletons for Iris, Area51, Vaders.
+make a copy of this file, called `config`, fill in details as required and uncomment one of the provider sections.  There are skeletons for Iris, Area51, Vaders, Custom.
 
-Some entries are not used for anything yet.
+Some entries are not used for anything yet [Schedules-Direct, the EPG URLs].
 
-The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` does.
+The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` does.  The config entry lets you point to the appropriate one for your platform.  It'd be nice if this happened automagically.
 
 This file is `source`ed by the other scripts and accepts two parameters. The first is a filter string, the second can be anything and just quiets the report of what filter is being used.
 
@@ -16,7 +16,7 @@ This file is `source`ed by the other scripts and accepts two parameters. The fir
 
 >NOTE: These scripts are using egrep or sed to process the regex.  telly uses go regex, so there may be differences in the regex processing.  Typically, the regex being used in telly are pretty simple [this OR that OR the other] so this works well enough.
 
-At initial commit all of these count and list scripts are configured only for filtering on "group-title", telly's default.   A filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.  IF that filter contains anything besides letters [spaces, |], it must be wrapped in quotes.
+At initial commit all of these count and list scripts are configured only for filtering on "group-title", telly's default.   A filter string can be provided as a parameter; if it's not provided the filter in the config file will be used.  If that filter contains anything besides letters [spaces, |], it must be wrapped in quotes.
   
 `channel_count.sh`
 
@@ -37,27 +37,56 @@ Applies a filter to your M3U and reports the channel list.
 
 ```
 ➜  ./channel_list.sh | head
-Using default filter: USA|UK
-A&E
-A&E Backup
-ABC
-ABC News
-ABC West
-AL JAZEERA NEWS ENGLISH
-AMC
-AMC Low Bandwith
-Adult Swim
+Using default filter: USA
+A&E	USA ENTERTAINMENT
+A&E low bandwith	USA ENTERTAINMENT
+ABC	USA ENTERTAINMENT
+ABC News	USA NEWS NETWORKS
+ABC West	USA ENTERTAINMENT
+AL JAZEERA NEWS ENGLISH	USA NEWS NETWORKS
+AMC	USA ENTERTAINMENT
+AMC Low Bandwith	USA ENTERTAINMENT
+Adult Swim	USA ENTERTAINMENT
 ➜  ./channel_list.sh IRISH | head
 Using filter: IRISH
-3E UK
-EIR 3p0rt1 2 HD
-IR: EIR Sports 1
-IRISH: PBS America
-IRISH: RTE 1 HD
-IRISH: RTE 2 HD
-IRISH: Sony Crime
-IRISH: TG4
-IRISH: TV 3 HD
+IRE: AT THE RACES SD	IRISH
+IRE: EIR SPORTS 1 FHD	IRISH
+IRE: EIR SPORTS 1 SD	IRISH
+IRE: EIR SPORTS 2 FHD	IRISH
+IRE: EIR SPORTS 2 SD	IRISH
+IRE: OIREACHTAS SD	IRISH
+IRE: PBS America	IRISH
+IRE: PREMIER SPORTS HD	IRISH
+IRE: RACING UK SD	IRISH
+```
+
+`channels.sh`
+
+Just runs the previous two scripts:
+
+```
+➜  ./channels.sh | head
+Using default filter: USA
+     618
+A&E	USA ENTERTAINMENT
+A&E low bandwith	USA ENTERTAINMENT
+ABC	USA ENTERTAINMENT
+ABC News	USA NEWS NETWORKS
+ABC West	USA ENTERTAINMENT
+AL JAZEERA NEWS ENGLISH	USA NEWS NETWORKS
+AMC	USA ENTERTAINMENT
+AMC Low Bandwith	USA ENTERTAINMENT
+➜  ./channels.sh IRISH | head
+Using filter: IRISH
+      20
+IRE: AT THE RACES SD	IRISH
+IRE: EIR SPORTS 1 FHD	IRISH
+IRE: EIR SPORTS 1 SD	IRISH
+IRE: EIR SPORTS 2 FHD	IRISH
+IRE: EIR SPORTS 2 SD	IRISH
+IRE: OIREACHTAS SD	IRISH
+IRE: PBS America	IRISH
+IRE: PREMIER SPORTS HD	IRISH
 ```
 
 `group_count.sh`
@@ -93,6 +122,29 @@ Using filter: IRISH
 IRISH
 ```
 
+`groups.sh`
+
+Runs the previous two scripts:
+
+```
+➜  ./groups.sh
+Using default filter: USA
+       9
+PREMIUM HD USA NETWORKS
+PREMIUM USA SPORTS NETWORKS
+USA & CANADA SPORTS
+USA ENTERTAINMENT
+USA KIDS NETWORKS
+USA MOVIE NETWORKS
+USA NEWS NETWORKS
+VIP USA ENTERTAINMENT
+VIP USA SPORTS NETWORKS
+➜  ./groups.sh IRISH
+Using filter: IRISH
+       1
+IRISH
+```
+
 `m3u.sh`
 
 Convenience script to retrieve the m3u; it redacts the username and password in the output.
@@ -110,6 +162,12 @@ http://irislinks.net:83/live/REDACTED/REDACTED/303854.ts
 #EXTINF:-1 tvg-id="btsport2.uk" tvg-name="VIP BT Sports  2 FHD" tvg-logo="http://picon.helixhosting.ninja/30930.png" group-title="UK VIP HD/FHD",VIP BT Sports  2 FHD
 http://irislinks.net:83/live/REDACTED/REDACTED/303859.ts
 ```
+
+`m3u-stock.sh`
+
+Convenience script to retrieve the m3u; it DOES NOT REDACT the username and password in the output.
+
+No sample output given; it looks just like the output above but with credentials in place.
 
 `go.sh`
 
