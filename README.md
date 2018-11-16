@@ -51,7 +51,7 @@ Using filter: IRISH
 
 `channel_list.sh`
 
-Applies a filter to your M3U and reports the channel list.
+Applies a filter to your M3U and reports the channel list.  Each line contains the channel and the group it came from, tab-separated if you want to copy-paste it into Excel or the like.
 
 ```
 ➜  ./channel_list.sh | head
