@@ -8,6 +8,7 @@
 
 # # Vader
 # export PROVIDER=Vaders
+# export PROVIDER_NAME=Vader
 # export USER=USERNAME
 # export PASS=PASSWORD
 # export M3U_URL="http://vaders.tv/vget?username=${USER}&password=${PASS}&vod=false&format=ts"
@@ -54,7 +55,7 @@ then
 	if [ -z "$2" ] 
 	then
 		echo "Platform: $OSTYPE"
-		echo "SEDCMD: $SEDCMD"
+		echo "Provider: $PROVIDER_NAME"
 		echo "Using default filter: $DEFAULT_FILTER"
 	fi
 	DEFAULT_FILTER="$DEFAULT_FILTER"
@@ -62,7 +63,7 @@ else
 	if [ -z "$2" ] 
 	then
 		echo "Platform: $OSTYPE"
-		echo "SEDCMD: $SEDCMD"
+		echo "Provider: $PROVIDER_NAME"
 		echo "Using filter: $1"
 	fi
 	DEFAULT_FILTER="$1"
