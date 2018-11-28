@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 source ${PWD}/config "$1" "$2"
 
