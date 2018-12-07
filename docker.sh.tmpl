@@ -6,6 +6,7 @@ docker run -d \
   -e TZ="America/Chicago" \
   -p '6077:6077/tcp' \
   -v ${PWD}/telly.config.toml:/etc/telly/telly.config.toml \
+  -v ${PWD}:/etc/telly \
   --restart unless-stopped \
   tellytv/telly:dev-ffmpeg
   

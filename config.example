@@ -40,6 +40,7 @@ fi
 
 export MYIP=0.0.0.0
 export FILTER="GROUP|GROUP"
+export USE_FILE=true
 
 # # SchedulesDirect
 # export SDUSER=USERNAME
@@ -48,24 +49,19 @@ export FILTER="GROUP|GROUP"
 export M3U_URL_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$M3U_URL")"
 export XML_URL_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$XML_URL")"
 
+export M3U_PATH_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$M3U_PATH")"
+export XML_PATH_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$XML_PATH")"
+
 _FILTER="$1"
 if [ -z "$_FILTER" ] 
 then
-	if [ -z "$2" ] 
-	then
-		echo "Platform: $OSTYPE"
-		echo "SEDCMD: $SEDCMD"
-		echo "Using default filter: $DEFAULT_FILTER"
-	fi
 	DEFAULT_FILTER="$DEFAULT_FILTER"
 else
-	if [ -z "$2" ] 
-	then
-		echo "Platform: $OSTYPE"
-		echo "SEDCMD: $SEDCMD"
-		echo "Using filter: $1"
-	fi
 	DEFAULT_FILTER="$1"
 fi
 
+if [ "$USE_FILE" = true ] ; then
+    export PROVIDER=Custom
+    export PROVIDER_NAME=${PROVIDER_NAME}-Custom
+fi
 
