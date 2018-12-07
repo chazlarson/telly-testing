@@ -8,6 +8,7 @@
 
 # # Vader
 # export PROVIDER=Vaders
+# export PROVIDER_NAME=Vader
 # export USER=USERNAME
 # export PASS=PASSWORD
 # export M3U_URL="http://vaders.tv/vget?username=${USER}&password=${PASS}&vod=false&format=ts"
