@@ -41,7 +41,7 @@ fi
 
 export MYIP=0.0.0.0
 export FILTER="GROUP|GROUP"
-export USE_FILE=true
+export USE_FILE=false
 
 # # SchedulesDirect
 # export SDUSER=USERNAME
