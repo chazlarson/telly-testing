@@ -17,11 +17,11 @@ The IP should be the IP of the machine where you're running these scripts.
 
 The Filter is the default filter that will be used if another is not is specified.
 
-If "USE_FILE" is true, the config will be set up to read M3U and XML from files rather than letting telly retrieve them from the internet.  Those files will be retrieved before the docker container is launched.  The rationale there is to allow testing to see if something is related to the content of the M3U or telly's retrieveal of it.
+If `USE_FILE` is true, the config will be set up to read M3U and XML from files rather than letting telly retrieve them from the internet.  Those files will be retrieved before the docker container is launched.  The rationale there is to allow testing to see if something is related to the content of the M3U or telly's retrieval of it.  The files will be named using the configured provider name.
 
 Some entries are not used for anything yet [Schedules-Direct, the EPG URLs].
 
-The build-in sed command on Mac OS X doesn't support the "-i" option, `gsed` does.  The config script will automagically select one or the other based on the platform you're running this on.
+The build-in `sed` command on Mac OS X doesn't support the "-i" option, `gsed` does.  The config script will automagically select one or the other based on the platform you're on.
 
 This file is executed by the other scripts and accepts one parameter, a filter string.  If the filter string is the empty string, the default filter will be used.  If you want to use a filter to include everything, use `.`.
 
