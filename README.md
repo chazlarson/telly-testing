@@ -13,11 +13,11 @@ export FILTER="GROUP|GROUP"
 export USE_FILE=false
 ```
 
-The IP should be the IP of the machien where you're running these scripts.
+The IP should be the IP of the machine where you're running these scripts.
 
 The Filter is the default filter that will be used if another is not is specified.
 
-If "USE_FILE" is true, the config will be set up to read M3U and XML from files rather than letting telly retrieve them from the internet.  Those files will be retrieved before the docker container is launched.
+If "USE_FILE" is true, the config will be set up to read M3U and XML from files rather than letting telly retrieve them from the internet.  Those files will be retrieved before the docker container is launched.  The rationale there is to allow testing to see if something is related to the content of the M3U or telly's retrieveal of it.
 
 Some entries are not used for anything yet [Schedules-Direct, the EPG URLs].
 
