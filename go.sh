@@ -20,8 +20,8 @@ ${SEDCMD} -i "s/\$PROVIDER/${PROVIDER_NAME}/"                      docker.sh
 ${SEDCMD} -i "s/\$PROVIDER_NAME/${PROVIDER_NAME}/"                 telly.config.toml
 ${SEDCMD} -i "s/\$PROVIDER/${PROVIDER}/"                           telly.config.toml
 
-${SEDCMD} -i "s/\$USER/${USER}/"                                   telly.config.toml
-${SEDCMD} -i "s/\$PASS/${PASS}/"                                   telly.config.toml
+${SEDCMD} -i "s/\$IPTVUSER/${IPTVUSER}/"                           telly.config.toml
+${SEDCMD} -i "s/\$IPTVPASS/${IPTVPASS}/"                           telly.config.toml
 
 if [ "$USE_FILE" = true ] ; then
 	${SEDCMD} -i "s/\$M3U_URL/\/etc\/telly\/${PROVIDER_NAME}.m3u/" telly.config.toml

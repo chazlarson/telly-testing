@@ -1,9 +1,13 @@
 #!/bin/bash
 
+printf "reading config: \n"
+printf "========================================\n"
+source ${PWD}/config "$1"
+
 echo PROVIDER......... $PROVIDER
 echo PROVIDER_NAME.... $PROVIDER_NAME
-echo USER............. $USER
-echo PASS............. $PASS
+echo IPTVUSER......... $IPTVUSER
+echo IPTVPASS......... $IPTVPASS
 echo M3U_URL.......... $M3U_URL
 echo XML_URL.......... $XML_URL
 
