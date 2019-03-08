@@ -2,7 +2,7 @@
 
 printf "reading config: \n"
 printf "========================================\n"
-source ${PWD}/config "$1"
+source "${PWD}/config" "$1"
 
 echo PROVIDER......... $PROVIDER
 echo PROVIDER_NAME.... $PROVIDER_NAME
