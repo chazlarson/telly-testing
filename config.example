@@ -59,7 +59,7 @@ export XML_PATH_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$XML_PATH")"
 _FILTER="$1"
 if [ -z "$_FILTER" ] 
 then
-	DEFAULT_FILTER="$DEFAULT_FILTER"
+	DEFAULT_FILTER="$FILTER"
 else
 	DEFAULT_FILTER="$1"
 fi
