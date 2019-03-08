@@ -1,6 +1,8 @@
 # telly-testing
 These are some simple test scripts I use for [telly](https://github.com/tellytv/telly). They are pretty braindead, but do what I wanted done.
 
+>NOTE: These scripts are using egrep or sed to process the regex.  telly uses go regex, so there may be differences in the regex processing.  Typically, the regex being used in telly are pretty simple [this OR that OR the other] so this works well enough.
+
 ## Setup
 `config.example`
 
