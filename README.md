@@ -8,6 +8,8 @@ These are some simple test scripts I use for [telly](https://github.com/tellytv/
 
 make a copy of this file, called `config`, fill in details as required and uncomment one of the provider sections.  There are skeletons for Iris, Area51, Vaders, Custom.
 
+If you uncomment more than one, the last one will "win".
+
 You'll note that they all use placeholders for the username and password in the URLs.
 ```
 # # Iris
