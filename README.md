@@ -3,7 +3,7 @@ These are some simple test scripts I use for [telly](https://github.com/tellytv/
 
 >NOTE: These scripts are using egrep or sed to process the regex.  telly uses go regex, so there may be differences in the regex processing.  Typically, the regex being used in telly are pretty simple [this OR that OR the other] so this works well enough.
 
->NOTE: If you run these from a path which contains a space [like /Users/Account Name/telly-testing/], you will liely have problems with the docker portion.  This isn't important to me since I don't use home dirs that contain spaces, so it's a low-priority fix for me.
+>NOTE: If you run these from a path which contains a space [like /Users/Account Name/telly-testing/], you will likely have problems with the docker portion.  This isn't important to me since I don't use home dirs that contain spaces, so it's a low-priority fix for me.
 
 ## Setup
 
