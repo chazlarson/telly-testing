@@ -95,10 +95,6 @@ DEFAULT_FILTER... USA MOVIE
 USE_FILE......... false
 M3U_PATH......... /Users/chazlarson/dev/github/telly-testing/Iris.m3u
 XML_PATH......... /Users/chazlarson/dev/github/telly-testing/Iris.xml
-M3U_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/get.php?username=11111111\&password=22222222\&output=ts\&type=m3u_plus
-XML_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/xmltv.php?username=11111111\&password=22222222\&output=ts\&type=m3u_plus
-M3U_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/Iris.m3u
-XML_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/Iris.xml
 
 > ./show_config.sh TEST_FILTER
 reading config:
@@ -115,10 +111,6 @@ DEFAULT_FILTER... TEST_FILTER
 USE_FILE......... false
 M3U_PATH......... /Users/chazlarson/dev/github/telly-testing/Iris.m3u
 XML_PATH......... /Users/chazlarson/dev/github/telly-testing/Iris.xml
-M3U_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/get.php?username=11111111\&password=22222222\&output=ts\&type=m3u_plus
-XML_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/xmltv.php?username=11111111\&password=22222222\&output=ts\&type=m3u_plus
-M3U_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/Iris.m3u
-XML_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/Iris.xml
 ```
 
 ## Usage
@@ -335,10 +327,6 @@ DEFAULT_FILTER... US|PPV|HBO|NBA|MLB|NFL|NHL|SPORTS|ESPN
 USE_FILE......... true
 M3U_PATH......... /Users/USER/dev/github/telly-testing/Iris.m3u
 XML_PATH......... /Users/USER/dev/github/telly-testing/Iris.xml
-M3U_URL_ESC...... http:\/\/irislinks.net:83\/gets.php?username=11111111\&password=22222222\&type=m3u_plus\&output=ts
-XML_URL_ESC...... http:\/\/irislinks.net:83\/xmltv.php?username=11111111\&password=22222222
-M3U_PATH_ESC..... \/Users\/USER\/dev\/github\/telly-testing\/Iris.m3u
-XML_PATH_ESC..... \/Users\/USER\/dev\/github\/telly-testing\/Iris.xml
 ```
 
 `go.sh`
@@ -362,10 +350,6 @@ DEFAULT_FILTER... .
 USE_FILE......... true
 M3U_PATH......... /Users/USER/dev/github/telly-testing/Iris.m3u
 XML_PATH......... /Users/USER/dev/github/telly-testing/Iris.xml
-M3U_URL_ESC...... http:\/\/irislinks.net:83\/gets.php?username=11111111\&password=22222222\&type=m3u_plus\&output=ts
-XML_URL_ESC...... http:\/\/irislinks.net:83\/xmltv.php?username=11111111\&password=22222222
-M3U_PATH_ESC..... \/Users\/USER\/dev\/github\/telly-testing\/Iris.m3u
-XML_PATH_ESC..... \/Users\/USER\/dev\/github\/telly-testing\/Iris.xml
 
 
 cleaning up existing telly dockers:

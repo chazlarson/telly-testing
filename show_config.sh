@@ -19,9 +19,3 @@ echo USE_FILE......... $USE_FILE
 echo M3U_PATH......... $M3U_PATH
 echo XML_PATH......... $XML_PATH
 
-echo M3U_URL_ESC...... $M3U_URL_ESC
-echo XML_URL_ESC...... $XML_URL_ESC
-
-echo M3U_PATH_ESC..... $M3U_PATH_ESC
-echo XML_PATH_ESC..... $XML_PATH_ESC
-
