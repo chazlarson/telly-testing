@@ -1,0 +1,32 @@
+# nothing to edit in here
+# I mean it, nothing.
+
+export M3U_PATH=$PWD/$PROVIDER_NAME.m3u
+export XML_PATH=$PWD/$PROVIDER_NAME.xml
+
+export M3U_URL_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$M3U_URL")"
+export XML_URL_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$XML_URL")"
+
+export M3U_PATH_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$M3U_PATH")"
+export XML_PATH_ESC="$(sed -e 's/[\/&]/\\&/g' <<<"$XML_PATH")"
+
+_FILTER="$1"
+if [ -z "$_FILTER" ] 
+then
+	DEFAULT_FILTER="$DEFAULT_FILTER"
+else
+	DEFAULT_FILTER="$1"
+fi
+
+if [ "$USE_FILE" = true ] ; then
+    export PROVIDER=Custom
+    export PROVIDER_NAME=${PROVIDER_NAME}-Custom
+fi
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    export SEDCMD=sed
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    export SEDCMD=gsed
+else
+    export SEDCMD=sed
+fi

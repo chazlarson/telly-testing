@@ -1,0 +1,20 @@
+# Provider
+
+### Change "THE_PROVIDER_NAME" to your provider name; cosmetic only
+export PROVIDER_NAME=THE_PROVIDER_NAME
+
+### Change "YOUR_IPTVUSERNAME" to the username you got from your provider
+### this might be embedded in a URL you got from your provider; see below for the format
+export IPTVUSER=YOUR_IPTVUSERNAME
+
+### Change "YOUR_IPTVPASSWORD" to the password you got from your provider
+### this might be embedded in a URL you got from your provider; see below for the format
+export IPTVPASS=YOUR_IPTVPASSWORD
+
+### Change these to the URLs you got from your provider
+### If your provbider is using XStream Codes software [most do] yours will look 
+### just like this and you will only have to edit "PROVIDER_URL" and "PORT".
+### Leave the ${IPTVUSER} and ${IPTVPASS} placeholders.
+export M3U_URL="http://PROVIDER_URL:PORT/get.php?username=${IPTVUSER}&password=${IPTVPASS}&type=m3u_plus&output=ts"
+export XML_URL="http://PROVIDER_URL:PORT/xmltv.php?username=${IPTVUSER}&password=${IPTVPASS}"
+

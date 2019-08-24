@@ -37,6 +37,9 @@ ${SEDCMD} -i "s/\$XML_PATH/${XML_PATH_ESC}/"                       telly.config.
 ${SEDCMD} -i "s/\$MYIP/${MYIP}/"                                   telly.config.toml
 ${SEDCMD} -i "s/\$FILTER/${DEFAULT_FILTER}/"                       telly.config.toml
 
+${SEDCMD} -i "s/\$TIMEZONE/${TIME_ZONE}/"                          telly.config.toml
+
+
 # printf "\n\npreflighting filters: \n"
 # printf "========================================\n"
 # printf "group count:   " && ./group_count.sh   ${DEFAULT_FILTER} quiet

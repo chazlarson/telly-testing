@@ -1,0 +1,30 @@
+# Set this to your machine's IP.  It is set in the telly config file as the base address.
+export MYIP=192.168.1.203
+
+#############################################################
+# Probably no need to edit anything below here ##############
+
+# This is the default filter that is used if no filter is specified on the command line
+export DEFAULT_FILTER="USA MOVIE"
+
+# If true, apply the filter to the whole line in the M3U rather than just to "group-title"
+export FILTER_RAW=false
+
+# is this is true, the M3U and EPG data will be retrieved into files first, and the
+# docker container will read them from those files rather than retrieve them from
+# the server at runtime.
+export USE_FILE=false
+
+# timezone to set in docker run command
+export TIME_ZONE="America/Chicago"
+
+#############################################################
+# Don't edit anything below here ############################
+
+# not used for anything yet
+export USE_FILTER=true
+
+export PROVIDER=Custom
+source "${PWD}/config-provider" "$1"
+
+source "${PWD}/config-env" "$1"

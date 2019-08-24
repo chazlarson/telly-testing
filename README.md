@@ -6,29 +6,66 @@ These are some simple test scripts I use for [telly](https://github.com/tellytv/
 >NOTE: If you run these from a path which contains a space [like /Users/Account Name/telly-testing/], you will liely have problems with the docker portion.  This isn't important to me since I don't use home dirs that contain spaces, so it's a low-priority fix for me.
 
 ## Setup
-`config.example`
 
-make a copy of this file, called `config`, fill in details as required and uncomment one of the provider sections.  There are skeletons for Iris, Area51, Vaders, Custom.
+Make a copy of `config-provider.example` called `config-provider`, and fill in your iptv provider details:
 
-If you uncomment more than one, the last one will "win".
-
-You'll note that they all use placeholders for the username and password in the URLs.
+An example:
 ```
-# # Iris
+# Provider
+
+### Change "THE_PROVIDER_NAME" to your provider name; cosmetic only
 export PROVIDER=Iris
-export PROVIDER_NAME=Iris
-export IPTVUSER=USERNAME_HERE
-export IPTVPASS=PASSWORD_HERE
+
+### Change "YOUR_IPTVUSERNAME" to the username you got from your provider
+### this might be embedded in a URL you got from your provider; see below for the format
+export IPTVUSER=11111111
+
+### Change "YOUR_IPTVPASSWORD" to the password you got from your provider
+### this might be embedded in a URL you got from your provider; see below for the format
+export IPTVPASS=22222222
+
+### Change these to the URLs you got from your provider
+### If your provbider is using XStream Codes software [most do] yours will look 
+### just like this and you will only have to edit "PROVIDER_URL" and "PORT".
+### Leave the ${IPTVUSER} and ${IPTVPASS} placeholders.
 export M3U_URL="http://irislinks.net:83/get.php?username=${IPTVUSER}&password=${IPTVPASS}&type=m3u_plus&output=ts"
 export XML_URL="http://irislinks.net:83/xmltv.php?username=${IPTVUSER}&password=${IPTVPASS}"
 ```
-Use those placeholders when you edit, or at least uncomment the username and password.  The config will error and quit if IPTVUSER or IPTVPASS are not set.  In future, those variables may be used in other contexts than the M3U_URL and XML_URL.
 
-You will want to edit at least the first two of these:
+Use those placeholders when you edit.  The config will error and quit if IPTVUSER or IPTVPASS are not set.  In future, those variables may be used in other contexts than the M3U_URL and XML_URL.
+
+in 'config', edit at least the first item [MYIP]:
 ```
-export MYIP=0.0.0.0
-export FILTER="GROUP|GROUP"
+# Set this to your machine's IP.  It is set in the telly config file as the base address.
+export MYIP=192.168.1.203
+
+#############################################################
+# Probably no need to edit anything below here ##############
+
+# This is the default filter that is used if no filter is specified on the command line
+export DEFAULT_FILTER="USA MOVIE"
+
+# If true, apply the filter to the whole line in the M3U rather than just to "group-title"
+export FILTER_RAW=false
+
+# is this is true, the M3U and EPG data will be retrieved into files first, and the
+# docker container will read them from those files rather than retrieve them from
+# the server at runtime.
 export USE_FILE=false
+
+# timezone to set in docker run command
+export TIME_ZONE="America/Chicago"
+
+#############################################################
+# Don't edit anything below here ############################
+
+# not used for anything yet
+export USE_FILTER=true
+
+export PROVIDER=Custom
+source "${PWD}/config-provider" "$1"
+
+source "${PWD}/config-env" "$1"
 ```
 
 The IP should be the IP of the machine where you're running these scripts.
@@ -37,53 +74,51 @@ The filter is the default filter that will be used if another is not is specifie
 
 If `USE_FILE` is `true`, the config will be set up to read M3U and XML from files rather than letting telly retrieve them from the internet.  Those files will be retrieved before the docker container is launched.  The rationale there is to allow testing to see if something is related to the content of the M3U or telly's retrieval of it.  The files will be named using the configured provider name.
 
-Some entries are not used for anything yet [Schedules-Direct, the EPG URLs].
-
-The build-in `sed` command on Mac OS X doesn't support the "-i" option, `gsed` does.  The config script will automagically select one or the other based on the platform you're on.
+The build-in `sed` command on Mac OS X doesn't support the "-i" option, `gsed` does.  The `config-env` script will automagically select one or the other based on the platform you're on.
 
 This file is executed by the other scripts and accepts one parameter, a filter string.  If the filter string is the empty string, the default filter will be used.  If you want to use a filter to include everything, use `.`.
 
-Here, `show_config.sh` with and without a filter specified on the command line: [note, those credentials were randomly generated just now; they are not real]
+Here, `show_config.sh` with and without a filter specified on the command line:
 ```
 > ./show_config.sh
 reading config:
 ========================================
-PROVIDER......... area51
-PROVIDER_NAME.... area51
-IPTVUSER......... 8UCiNYzugjSV
-IPTVPASS......... W46bMsYnm2IY
-M3U_URL.......... http://iptv-area-51.tv:2095/get.php?username=8UCiNYzugjSV&password=W46bMsYnm2IY&output=ts&type=m3u_plus
-XML_URL.......... http://iptv-area-51.tv:2095/xmltv.php?username=8UCiNYzugjSV&password=W46bMsYnm2IY&output=ts&type=m3u_plus
+PROVIDER......... Custom
+PROVIDER_NAME.... Iris
+IPTVUSER......... 11111111
+IPTVPASS......... 22222222
+M3U_URL.......... http://irislinks.net:83/get.php?username=11111111&password=22222222&output=ts&type=m3u_plus
+XML_URL.......... http://irislinks.net:83/xmltv.php?username=11111111&password=22222222&output=ts&type=m3u_plus
 SEDCMD........... gsed
 MYIP............. 192.168.1.61
 DEFAULT_FILTER... USA MOVIE
 USE_FILE......... false
-M3U_PATH......... /Users/chazlarson/dev/github/telly-testing/area51.m3u
-XML_PATH......... /Users/chazlarson/dev/github/telly-testing/area51.xml
-M3U_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/get.php?username=8UCiNYzugjSV\&password=W46bMsYnm2IY\&output=ts\&type=m3u_plus
-XML_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/xmltv.php?username=8UCiNYzugjSV\&password=W46bMsYnm2IY\&output=ts\&type=m3u_plus
-M3U_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/area51.m3u
-XML_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/area51.xml
+M3U_PATH......... /Users/chazlarson/dev/github/telly-testing/Iris.m3u
+XML_PATH......... /Users/chazlarson/dev/github/telly-testing/Iris.xml
+M3U_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/get.php?username=11111111\&password=22222222\&output=ts\&type=m3u_plus
+XML_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/xmltv.php?username=11111111\&password=22222222\&output=ts\&type=m3u_plus
+M3U_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/Iris.m3u
+XML_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/Iris.xml
 
 > ./show_config.sh TEST_FILTER
 reading config:
 ========================================
-PROVIDER......... area51
-PROVIDER_NAME.... area51
-IPTVUSER......... 8UCiNYzugjSV
-IPTVPASS......... W46bMsYnm2IY
-M3U_URL.......... http://iptv-area-51.tv:2095/get.php?username=8UCiNYzugjSV&password=W46bMsYnm2IY&output=ts&type=m3u_plus
-XML_URL.......... http://iptv-area-51.tv:2095/xmltv.php?username=8UCiNYzugjSV&password=W46bMsYnm2IY&output=ts&type=m3u_plus
+PROVIDER......... Custom
+PROVIDER_NAME.... Iris
+IPTVUSER......... 11111111
+IPTVPASS......... 22222222
+M3U_URL.......... http://irislinks.net:83/get.php?username=11111111&password=22222222&output=ts&type=m3u_plus
+XML_URL.......... http://irislinks.net:83/xmltv.php?username=11111111&password=22222222&output=ts&type=m3u_plus
 SEDCMD........... gsed
 MYIP............. 192.168.1.61
 DEFAULT_FILTER... TEST_FILTER
 USE_FILE......... false
-M3U_PATH......... /Users/chazlarson/dev/github/telly-testing/area51.m3u
-XML_PATH......... /Users/chazlarson/dev/github/telly-testing/area51.xml
-M3U_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/get.php?username=8UCiNYzugjSV\&password=W46bMsYnm2IY\&output=ts\&type=m3u_plus
-XML_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/xmltv.php?username=8UCiNYzugjSV\&password=W46bMsYnm2IY\&output=ts\&type=m3u_plus
-M3U_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/area51.m3u
-XML_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/area51.xml
+M3U_PATH......... /Users/chazlarson/dev/github/telly-testing/Iris.m3u
+XML_PATH......... /Users/chazlarson/dev/github/telly-testing/Iris.xml
+M3U_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/get.php?username=11111111\&password=22222222\&output=ts\&type=m3u_plus
+XML_URL_ESC...... http:\/\/iptv-area-51.tv:2095\/xmltv.php?username=11111111\&password=22222222\&output=ts\&type=m3u_plus
+M3U_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/Iris.m3u
+XML_PATH_ESC..... \/Users\/chazlarson\/dev\/github\/telly-testing\/Iris.xml
 ```
 
 ## Usage
@@ -318,7 +353,7 @@ reading config:
 PROVIDER......... Custom
 PROVIDER_NAME.... Iris-Custom
 USER............. 11111111
-PASS............. 
+PASS............. 22222222
 M3U_URL.......... http://irislinks.net:83/gets.php?username=11111111&password=22222222&type=m3u_plus&output=ts
 XML_URL.......... http://irislinks.net:83/xmltv.php?username=11111111&password=22222222
 SEDCMD........... gsed
