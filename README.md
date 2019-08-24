@@ -3,7 +3,7 @@ These are some simple test scripts I use for [telly](https://github.com/tellytv/
 
 >NOTE: These scripts are using egrep or sed to process the regex.  telly uses go regex, so there may be differences in the regex processing.  Typically, the regex being used in telly are pretty simple [this OR that OR the other] so this works well enough.
 
->NOTE: If you run these from a path which contains a space [like /Users/Account Name/telly-testing/], you will likely have problems with the docker portion.  This isn't important to me since I don't use home dirs that contain spaces, so it's a low-priority fix for me.
+>NOTE: If you run these from a path which contains a space [like `/Users/Account Name/telly-testing/`], you will likely have problems with the docker portion.  This isn't important to me since I don't use home dirs that contain spaces, so it's a low-priority fix for me.
 
 ## Setup
 
@@ -34,7 +34,7 @@ export XML_URL="http://irislinks.net:83/xmltv.php?username=${IPTVUSER}&password=
 
 Use those placeholders when you edit.  The config will error and quit if IPTVUSER or IPTVPASS are not set.  In future, those variables may be used in other contexts than the M3U_URL and XML_URL.
 
-in 'config', edit at least the first item [MYIP]:
+in `config`, edit at least the first item [`MYIP`]:
 ```
 # Set this to your machine's IP.  It is set in the telly config file as the base address.
 export MYIP=192.168.1.203
